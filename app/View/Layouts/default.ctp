@@ -38,7 +38,26 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <body>
 	<div id="container">
 		<div id="header">
-			<h1><?php echo $this->Html->link($cakeDescription, 'http://cakephp.org'); ?></h1>
+			<h1><?php echo $this->Html->link("Sistema de controle de gastos", 'http://localhost/sistema-controle-gastos/'); ?></h1>
+			<div id="menu">
+				<div align="right">
+					<?php
+					// if (AuthComponent::user()):
+					if (true):
+					  // The user is logged in, show the logout link
+					  echo $this->Html->link('Log out', array('controller' => 'users', 'action' => 'logout'));
+					else:
+					  // The user is not logged in, show login link
+					  echo $this->Html->link('Log in', array('controller' => 'users', 'action' => 'login'));
+					endif;
+					?>
+				</div>
+				<?php echo $this->Html->link("Receitas", array('controller'=>'receitas', 'action'=>'index'), array('escape'=>false)).' | '; ?>
+				<?php echo $this->Html->link("Despesas", array('controller'=>'despesas', 'action'=>'index'), array('escape'=>false)).' | '; ?>			
+				<?php echo $this->Html->link("Categorias", array('controller'=>'categorias', 'action'=>'index'), array('escape'=>false)).' | '; ?>			
+				<?php echo $this->Html->link("Usuarios", array('controller'=>'users', 'action'=>'index'), array('escape'=>false)).' | '; ?>			
+				<?php echo $this->Html->link("Orçamentos", array('controller'=>'orcamentos', 'action'=>'index'), array('escape'=>false)); ?>			
+			</div>
 		</div>
 		<div id="content">
 
