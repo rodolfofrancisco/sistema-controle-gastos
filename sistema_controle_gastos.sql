@@ -86,11 +86,11 @@ DROP TABLE IF EXISTS `orcamentos`;
 CREATE TABLE IF NOT EXISTS `orcamentos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `valor` decimal(10,2) NOT NULL,
-  `usuario_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `usuario_id` (`usuario_id`)
+  KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -112,14 +112,15 @@ CREATE TABLE IF NOT EXISTS `receitas` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `usuarios`
+-- Estrutura da tabela `users`
 --
 
-DROP TABLE IF EXISTS `usuarios`;
-CREATE TABLE IF NOT EXISTS `usuarios` (
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `login` varchar(50) NOT NULL,
-  `senha` varchar(100) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` VARCHAR(20),
   `email` varchar(100) NOT NULL,
   `telefone` varchar(50) NOT NULL,
   `endereco` varchar(150) NOT NULL,
@@ -150,7 +151,7 @@ ALTER TABLE `item_orcamentos`
 -- Limitadores para a tabela `orcamentos`
 --
 ALTER TABLE `orcamentos`
-  ADD CONSTRAINT `orcamentos_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
+  ADD CONSTRAINT `orcamentos_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
