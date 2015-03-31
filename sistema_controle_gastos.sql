@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `categorias` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `descricao` varchar(100) NOT NULL,
   `created` datetime NOT NULL,
-  `modifield` datetime NOT NULL,
+  `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `despesas` (
   `categoria_id` int(11) NOT NULL,
   `receita_id` int(11) NOT NULL,
   `created` datetime NOT NULL,
-  `modifield` datetime NOT NULL,
+  `modified` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `categoria_id` (`categoria_id`),
   KEY `recurso_id` (`receita_id`)
@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `item_orcamentos` (
   `categoria_id` int(11) NOT NULL,
   `orcamento_id` int(11) NOT NULL,
   `created` datetime NOT NULL,
-  `modifield` datetime NOT NULL,
+  `modified` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `categoria_id` (`categoria_id`,`orcamento_id`),
   KEY `orcamento_id` (`orcamento_id`)
@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `orcamentos` (
   `valor` decimal(10,2) NOT NULL,
   `usuario_id` int(11) NOT NULL,
   `created` datetime NOT NULL,
-  `modifield` datetime NOT NULL,
+  `modified` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `usuario_id` (`usuario_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `receitas` (
   `valor` decimal(10,2) NOT NULL,
   `descricao` varchar(100) NOT NULL,
   `created` datetime NOT NULL,
-  `modifield` datetime NOT NULL,
+  `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -124,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `telefone` varchar(50) NOT NULL,
   `endereco` varchar(150) NOT NULL,
   `created` datetime NOT NULL,
-  `modifield` datetime NOT NULL,
+  `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
