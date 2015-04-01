@@ -1,11 +1,11 @@
 <?php
-App::uses('Categorium', 'Model');
+App::uses('Categoria', 'Model');
 
 /**
- * Categorium Test Case
+ * Categoria Test Case
  *
  */
-class CategoriumTest extends CakeTestCase {
+class CategoriaTest extends CakeTestCase {
 
 /**
  * setUp method
@@ -14,7 +14,7 @@ class CategoriumTest extends CakeTestCase {
  */
 	public function setUp() {
 		parent::setUp();
-		$this->Categorium = ClassRegistry::init('Categorium');
+		$this->Categoria = ClassRegistry::init('Categoria');
 	}
 
 /**
@@ -23,7 +23,7 @@ class CategoriumTest extends CakeTestCase {
  * @return void
  */
 	public function tearDown() {
-		unset($this->Categorium);
+		unset($this->Categoria);
 
 		parent::tearDown();
 	}

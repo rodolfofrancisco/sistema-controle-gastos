@@ -55,7 +55,7 @@ class ItemOrcamentosController extends AppController {
 				$this->Session->setFlash(__('The item orcamento could not be saved. Please, try again.'));
 			}
 		}
-		$categorias = $this->ItemOrcamento->Categorium->find('list');
+		$categorias = $this->ItemOrcamento->Categoria->find('list');
 		$orcamentos = $this->ItemOrcamento->Orcamento->find('list');
 		$this->set(compact('categorias', 'orcamentos'));
 	}
@@ -82,7 +82,7 @@ class ItemOrcamentosController extends AppController {
 			$options = array('conditions' => array('ItemOrcamento.' . $this->ItemOrcamento->primaryKey => $id));
 			$this->request->data = $this->ItemOrcamento->find('first', $options);
 		}
-		$categorias = $this->ItemOrcamento->Categorium->find('list');
+		$categorias = $this->ItemOrcamento->Categoria->find('list');
 		$orcamentos = $this->ItemOrcamento->Orcamento->find('list');
 		$this->set(compact('categorias', 'orcamentos'));
 	}

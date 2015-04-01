@@ -1,11 +1,11 @@
 <?php
-App::uses('Receitum', 'Model');
+App::uses('Receita', 'Model');
 
 /**
- * Receitum Test Case
+ * Receita Test Case
  *
  */
-class ReceitumTest extends CakeTestCase {
+class ReceitaTest extends CakeTestCase {
 
 /**
  * setUp method
@@ -14,7 +14,7 @@ class ReceitumTest extends CakeTestCase {
  */
 	public function setUp() {
 		parent::setUp();
-		$this->Receitum = ClassRegistry::init('Receitum');
+		$this->Receita = ClassRegistry::init('Receita');
 	}
 
 /**
@@ -23,7 +23,7 @@ class ReceitumTest extends CakeTestCase {
  * @return void
  */
 	public function tearDown() {
-		unset($this->Receitum);
+		unset($this->Receita);
 
 		parent::tearDown();
 	}
