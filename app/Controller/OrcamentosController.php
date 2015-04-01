@@ -34,7 +34,7 @@ class OrcamentosController extends AppController {
  */
 	public function view($id = null) {
 		if (!$this->Orcamento->exists($id)) {
-			throw new NotFoundException(__('Invalid orcamento'));
+			throw new NotFoundException(__('Orçamento inválido'));
 		}
 		$options = array('conditions' => array('Orcamento.' . $this->Orcamento->primaryKey => $id));
 		$this->set('orcamento', $this->Orcamento->find('first', $options));
@@ -49,13 +49,15 @@ class OrcamentosController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Orcamento->create();
 			if ($this->Orcamento->save($this->request->data)) {
-				$this->Session->setFlash(__('The orcamento has been saved.'));
+				$this->Session->setFlash(__('Orçamento salvo com sucesso.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The orcamento could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('Erro ao salvar orçamento.'));
 			}
 		}
-		$users = $this->Orcamento->User->find('list');
+		$users = $this->Orcamento->User->find('list', array(
+        	'fields' => array('User.username')
+   		));
 		$this->set(compact('users'));
 	}
 
@@ -72,16 +74,18 @@ class OrcamentosController extends AppController {
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Orcamento->save($this->request->data)) {
-				$this->Session->setFlash(__('The orcamento has been saved.'));
+				$this->Session->setFlash(__('Orçamento salvo com sucesso.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The orcamento could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('Erro ao salvar orçamento.'));
 			}
 		} else {
 			$options = array('conditions' => array('Orcamento.' . $this->Orcamento->primaryKey => $id));
 			$this->request->data = $this->Orcamento->find('first', $options);
 		}
-		$users = $this->Orcamento->User->find('list');
+		$users = $this->Orcamento->User->find('list', array(
+        	'fields' => array('User.username')
+   		));
 		$this->set(compact('users'));
 	}
 
@@ -99,9 +103,9 @@ class OrcamentosController extends AppController {
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Orcamento->delete()) {
-			$this->Session->setFlash(__('The orcamento has been deleted.'));
+			$this->Session->setFlash(__('Orçamento apagado com sucesso.'));
 		} else {
-			$this->Session->setFlash(__('The orcamento could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('Erro ao apagar orçamento'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}

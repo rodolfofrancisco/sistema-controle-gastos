@@ -27,7 +27,7 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('Edit Categoria'), array('action' => 'edit', $categoria['Categoria']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Categoria'), array('action' => 'delete', $categoria['Categoria']['id']), array(), __('Are you sure you want to delete # %s?', $categoria['Categoria']['id'])); ?> </li>
+		<li><?php echo $this->Form->postLink(__('Delete Categoria'), array('action' => 'delete', $categoria['Categoria']['id']), array(), __('Você tem certeza que deseja excluir # %s?', $categoria['Categoria']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Categorias'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Categoria'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Despesas'), array('controller' => 'despesas', 'action' => 'index')); ?> </li>
@@ -62,7 +62,7 @@
 			<td class="actions">
 				<?php echo $this->Html->link(__('View'), array('controller' => 'despesas', 'action' => 'view', $despesa['id'])); ?>
 				<?php echo $this->Html->link(__('Edit'), array('controller' => 'despesas', 'action' => 'edit', $despesa['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'despesas', 'action' => 'delete', $despesa['id']), array(), __('Are you sure you want to delete # %s?', $despesa['id'])); ?>
+				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'despesas', 'action' => 'delete', $despesa['id']), array(), __('Você tem certeza que deseja excluir # %s?', $despesa['id'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>
@@ -99,7 +99,7 @@
 			<td class="actions">
 				<?php echo $this->Html->link(__('View'), array('controller' => 'item_orcamentos', 'action' => 'view', $itemOrcamento['id'])); ?>
 				<?php echo $this->Html->link(__('Edit'), array('controller' => 'item_orcamentos', 'action' => 'edit', $itemOrcamento['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'item_orcamentos', 'action' => 'delete', $itemOrcamento['id']), array(), __('Are you sure you want to delete # %s?', $itemOrcamento['id'])); ?>
+				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'item_orcamentos', 'action' => 'delete', $itemOrcamento['id']), array(), __('Você tem certeza que deseja excluir # %s?', $itemOrcamento['id'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>

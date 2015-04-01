@@ -37,7 +37,7 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('Edit Item Orcamento'), array('action' => 'edit', $itemOrcamento['ItemOrcamento']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Item Orcamento'), array('action' => 'delete', $itemOrcamento['ItemOrcamento']['id']), array(), __('Are you sure you want to delete # %s?', $itemOrcamento['ItemOrcamento']['id'])); ?> </li>
+		<li><?php echo $this->Form->postLink(__('Delete Item Orcamento'), array('action' => 'delete', $itemOrcamento['ItemOrcamento']['id']), array(), __('Você tem certeza que deseja excluir # %s?', $itemOrcamento['ItemOrcamento']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Item Orcamentos'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Item Orcamento'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Categorias'), array('controller' => 'categorias', 'action' => 'index')); ?> </li>

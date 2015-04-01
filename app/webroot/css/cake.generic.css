@@ -116,12 +116,20 @@ p {
 }
 
 /** containers **/
-div.form,
+/*div.form,
 div.index,
 div.view {
 	float:right;
 	width:76%;
 	border-left:1px solid #666;
+	padding:10px 2%;
+}
+*/
+div.form,
+div.index,
+div.view {
+	width:960px;
+	margin: 0 auto;
 	padding:10px 2%;
 }
 div.actions {
@@ -170,7 +178,7 @@ table tr:nth-child(even) {
 	background: #f9f9f9;
 }
 td.actions {
-	text-align: center;
+	/*text-align: center;*/
 	white-space: nowrap;
 }
 table td.actions a {

@@ -28,7 +28,7 @@
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $itemOrcamento['ItemOrcamento']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $itemOrcamento['ItemOrcamento']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $itemOrcamento['ItemOrcamento']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $itemOrcamento['ItemOrcamento']['id']))); ?>
+			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $itemOrcamento['ItemOrcamento']['id']), array('confirm' => __('Você tem certeza que deseja excluir # %s?', $itemOrcamento['ItemOrcamento']['id']))); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>

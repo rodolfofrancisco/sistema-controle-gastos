@@ -32,7 +32,7 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('Edit Receita'), array('action' => 'edit', $receita['Receita']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Receita'), array('action' => 'delete', $receita['Receita']['id']), array(), __('Are you sure you want to delete # %s?', $receita['Receita']['id'])); ?> </li>
+		<li><?php echo $this->Form->postLink(__('Delete Receita'), array('action' => 'delete', $receita['Receita']['id']), array(), __('Você tem certeza que deseja excluir # %s?', $receita['Receita']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Receitas'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Receita'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Despesas'), array('controller' => 'despesas', 'action' => 'index')); ?> </li>
@@ -65,7 +65,7 @@
 			<td class="actions">
 				<?php echo $this->Html->link(__('View'), array('controller' => 'despesas', 'action' => 'view', $despesa['id'])); ?>
 				<?php echo $this->Html->link(__('Edit'), array('controller' => 'despesas', 'action' => 'edit', $despesa['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'despesas', 'action' => 'delete', $despesa['id']), array(), __('Are you sure you want to delete # %s?', $despesa['id'])); ?>
+				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'despesas', 'action' => 'delete', $despesa['id']), array(), __('Você tem certeza que deseja excluir # %s?', $despesa['id'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>

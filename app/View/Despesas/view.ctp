@@ -42,7 +42,7 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('Edit Despesa'), array('action' => 'edit', $despesa['Despesa']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Despesa'), array('action' => 'delete', $despesa['Despesa']['id']), array(), __('Are you sure you want to delete # %s?', $despesa['Despesa']['id'])); ?> </li>
+		<li><?php echo $this->Form->postLink(__('Delete Despesa'), array('action' => 'delete', $despesa['Despesa']['id']), array(), __('Você tem certeza que deseja excluir # %s?', $despesa['Despesa']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Despesas'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Despesa'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Categorias'), array('controller' => 'categorias', 'action' => 'index')); ?> </li>

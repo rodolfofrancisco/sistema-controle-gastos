@@ -14,7 +14,7 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Receita.id')), array(), __('Are you sure you want to delete # %s?', $this->Form->value('Receita.id'))); ?></li>
+		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Receita.id')), array(), __('Você tem certeza que deseja excluir # %s?', $this->Form->value('Receita.id'))); ?></li>
 		<li><?php echo $this->Html->link(__('List Receitas'), array('action' => 'index')); ?></li>
 		<li><?php echo $this->Html->link(__('List Despesas'), array('controller' => 'despesas', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Despesa'), array('controller' => 'despesas', 'action' => 'add')); ?> </li>

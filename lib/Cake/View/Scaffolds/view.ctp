@@ -52,7 +52,7 @@ foreach ($scaffoldFields as $_field) {
 	echo " </li>\n";
 
 	echo "\t\t<li>";
-	echo $this->Form->postLink(__d('cake', 'Delete %s', $singularHumanName), array('action' => 'delete', ${$singularVar}[$modelClass][$primaryKey]), array(), __d('cake', 'Are you sure you want to delete # %s?', ${$singularVar}[$modelClass][$primaryKey]));
+	echo $this->Form->postLink(__d('cake', 'Delete %s', $singularHumanName), array('action' => 'delete', ${$singularVar}[$modelClass][$primaryKey]), array(), __d('cake', 'Você tem certeza que deseja excluir # %s?', ${$singularVar}[$modelClass][$primaryKey]));
 	echo " </li>\n";
 
 	echo "\t\t<li>";
@@ -173,7 +173,7 @@ $otherSingularVar = Inflector::variable($_alias);
 				__d('cake', 'Delete'),
 				array('plugin' => $_details['plugin'], 'controller' => $_details['controller'], 'action' => 'delete', ${$otherSingularVar}[$_details['primaryKey']]),
 				array(),
-				__d('cake', 'Are you sure you want to delete # %s?', ${$otherSingularVar}[$_details['primaryKey']])
+				__d('cake', 'Você tem certeza que deseja excluir # %s?', ${$otherSingularVar}[$_details['primaryKey']])
 			);
 			echo "\n";
 			echo "\t\t\t</td>\n";
