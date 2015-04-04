@@ -53,8 +53,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 					endif;
 					?>
 				</div>
-				<?php echo $this->Html->link("Orçamentos", array('controller'=>'orcamentos', 'action'=>'index'), array('escape'=>false)); ?>			
-				<?php echo $this->Html->link("Item de Orçamento", array('controller'=>'itemOrcamentos', 'action'=>'index'), array('escape'=>false)); ?>			
+				<?php echo $this->Html->link("Orçamentos", array('controller'=>'orcamentos', 'action'=>'index'), array('escape'=>false)).' | '; ?>			
+				<?php echo $this->Html->link("Item de Orçamento", array('controller'=>'itemOrcamentos', 'action'=>'index'), array('escape'=>false)).' | '; ?>			
 				<?php echo $this->Html->link("Receitas", array('controller'=>'receitas', 'action'=>'index'), array('escape'=>false)).' | '; ?>
 				<?php echo $this->Html->link("Despesas", array('controller'=>'despesas', 'action'=>'index'), array('escape'=>false)).' | '; ?>			
 				<?php echo $this->Html->link("Categorias", array('controller'=>'categorias', 'action'=>'index'), array('escape'=>false)).' | '; ?>			

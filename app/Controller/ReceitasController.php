@@ -34,10 +34,15 @@ class ReceitasController extends AppController {
  */
 	public function view($id = null) {
 		if (!$this->Receita->exists($id)) {
-			throw new NotFoundException(__('Invalid receita'));
+			throw new NotFoundException(__('Receita inválida'));
 		}
 		$options = array('conditions' => array('Receita.' . $this->Receita->primaryKey => $id));
 		$this->set('receita', $this->Receita->find('first', $options));
+
+		$this->loadModel('Categoria');
+		$categorias = $this->Categoria->find('list', array(
+        	'fields' => array('Categoria.descricao')));
+		$this->set(compact('categorias'));
 	}
 
 /**
@@ -49,7 +54,7 @@ class ReceitasController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Receita->create();
 			if ($this->Receita->save($this->request->data)) {
-				$this->Session->setFlash(__('The receita has been saved.'));
+				$this->Session->setFlash(__('Receita salva com sucesso.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The receita could not be saved. Please, try again.'));
@@ -66,14 +71,14 @@ class ReceitasController extends AppController {
  */
 	public function edit($id = null) {
 		if (!$this->Receita->exists($id)) {
-			throw new NotFoundException(__('Invalid receita'));
+			throw new NotFoundException(__('Receita inválida'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Receita->save($this->request->data)) {
-				$this->Session->setFlash(__('The receita has been saved.'));
+				$this->Session->setFlash(__('Receita salva com sucesso.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The receita could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('Erro ao salvar receita.'));
 			}
 		} else {
 			$options = array('conditions' => array('Receita.' . $this->Receita->primaryKey => $id));
@@ -91,13 +96,13 @@ class ReceitasController extends AppController {
 	public function delete($id = null) {
 		$this->Receita->id = $id;
 		if (!$this->Receita->exists()) {
-			throw new NotFoundException(__('Invalid receita'));
+			throw new NotFoundException(__('Receita inválida'));
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Receita->delete()) {
-			$this->Session->setFlash(__('The receita has been deleted.'));
+			$this->Session->setFlash(__('Receita apagada com sucesso'));
 		} else {
-			$this->Session->setFlash(__('The receita could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('Erro ao salvar receita.'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}

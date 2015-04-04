@@ -1,9 +1,14 @@
 <div class="receitas index">
 	<h2><?php echo __('Receitas'); ?></h2>
+
+	<div class="actions">
+		<?php echo $this->Html->link(__('Criar Receita'), array('action' => 'add')); ?>
+	</div>
+
 	<table cellpadding="0" cellspacing="0">
 	<thead>
 	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
+			<!-- <th><?php echo $this->Paginator->sort('id'); ?></th> -->
 			<th><?php echo $this->Paginator->sort('valor'); ?></th>
 			<th><?php echo $this->Paginator->sort('descricao'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
@@ -14,7 +19,7 @@
 	<tbody>
 	<?php foreach ($receitas as $receita): ?>
 	<tr>
-		<td><?php echo h($receita['Receita']['id']); ?>&nbsp;</td>
+		<!-- <td><?php echo h($receita['Receita']['id']); ?>&nbsp;</td> -->
 		<td><?php echo h($receita['Receita']['valor']); ?>&nbsp;</td>
 		<td><?php echo h($receita['Receita']['descricao']); ?>&nbsp;</td>
 		<td><?php echo h($receita['Receita']['created']); ?>&nbsp;</td>
@@ -36,17 +41,17 @@
 	?>	</p>
 	<div class="paging">
 	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
+		echo $this->Paginator->prev('< ' . __('anterior'), array(), null, array('class' => 'prev disabled'));
 		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
+		echo $this->Paginator->next(__('próxima') . ' >', array(), null, array('class' => 'next disabled'));
 	?>
 	</div>
 </div>
-<div class="actions">
+<!-- <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('New Receita'), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('List Despesas'), array('controller' => 'despesas', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Despesa'), array('controller' => 'despesas', 'action' => 'add')); ?> </li>
 	</ul>
-</div>
+</div> -->
