@@ -1,11 +1,11 @@
 <div class="itemOrcamentos view">
 <h2><?php echo __('Item Orcamento'); ?></h2>
 	<dl>
-		<dt><?php echo __('Id'); ?></dt>
+<!-- 		<dt><?php echo __('Id'); ?></dt>
 		<dd>
 			<?php echo h($itemOrcamento['ItemOrcamento']['id']); ?>
 			&nbsp;
-		</dd>
+		</dd> -->
 		<dt><?php echo __('Valor'); ?></dt>
 		<dd>
 			<?php echo h($itemOrcamento['ItemOrcamento']['valor']); ?>
@@ -13,12 +13,12 @@
 		</dd>
 		<dt><?php echo __('Categoria'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($itemOrcamento['Categoria']['id'], array('controller' => 'categorias', 'action' => 'view', $itemOrcamento['Categoria']['id'])); ?>
+			<?php echo $this->Html->link($itemOrcamento['Categoria']['descricao'], array('controller' => 'categorias', 'action' => 'view', $itemOrcamento['Categoria']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Orcamento'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($itemOrcamento['Orcamento']['id'], array('controller' => 'orcamentos', 'action' => 'view', $itemOrcamento['Orcamento']['id'])); ?>
+			<?php echo $this->Html->link($itemOrcamento['Orcamento']['valor'], array('controller' => 'orcamentos', 'action' => 'view', $itemOrcamento['Orcamento']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Created'); ?></dt>
@@ -33,7 +33,7 @@
 		</dd>
 	</dl>
 </div>
-<div class="actions">
+<!-- <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('Edit Item Orcamento'), array('action' => 'edit', $itemOrcamento['ItemOrcamento']['id'])); ?> </li>
@@ -45,4 +45,4 @@
 		<li><?php echo $this->Html->link(__('List Orcamentos'), array('controller' => 'orcamentos', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Orcamento'), array('controller' => 'orcamentos', 'action' => 'add')); ?> </li>
 	</ul>
-</div>
+</div> -->

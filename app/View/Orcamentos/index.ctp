@@ -2,7 +2,7 @@
 	<h2><?php echo __('Orcamentos'); ?></h2>
 
 	<div class="actions">
-		<?php echo $this->Html->link(__('Criar Orçamento'), array('action' => 'add')); ?></li>
+		<?php echo $this->Html->link(__('Criar Orçamento'), array('action' => 'add')); ?>
 	</div>
 
 	<table cellpadding="0" cellspacing="0">

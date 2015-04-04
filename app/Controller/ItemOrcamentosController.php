@@ -34,7 +34,7 @@ class ItemOrcamentosController extends AppController {
  */
 	public function view($id = null) {
 		if (!$this->ItemOrcamento->exists($id)) {
-			throw new NotFoundException(__('Invalid item orcamento'));
+			throw new NotFoundException(__('Item de orçamento inválido'));
 		}
 		$options = array('conditions' => array('ItemOrcamento.' . $this->ItemOrcamento->primaryKey => $id));
 		$this->set('itemOrcamento', $this->ItemOrcamento->find('first', $options));
@@ -49,14 +49,16 @@ class ItemOrcamentosController extends AppController {
 		if ($this->request->is('post')) {
 			$this->ItemOrcamento->create();
 			if ($this->ItemOrcamento->save($this->request->data)) {
-				$this->Session->setFlash(__('The item orcamento has been saved.'));
+				$this->Session->setFlash(__('Item de orçamento salvo com sucesso.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The item orcamento could not be saved. Please, try again.'));
 			}
 		}
-		$categorias = $this->ItemOrcamento->Categoria->find('list');
-		$orcamentos = $this->ItemOrcamento->Orcamento->find('list');
+		$categorias = $this->ItemOrcamento->Categoria->find('list', array(
+        	'fields' => array('Categoria.descricao')));
+		$orcamentos = $this->ItemOrcamento->Orcamento->find('list', array(
+        	'fields' => array('Orcamento.valor')));
 		$this->set(compact('categorias', 'orcamentos'));
 	}
 
@@ -69,21 +71,23 @@ class ItemOrcamentosController extends AppController {
  */
 	public function edit($id = null) {
 		if (!$this->ItemOrcamento->exists($id)) {
-			throw new NotFoundException(__('Invalid item orcamento'));
+			throw new NotFoundException(__('Item de orçamento inválido'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->ItemOrcamento->save($this->request->data)) {
-				$this->Session->setFlash(__('The item orcamento has been saved.'));
+				$this->Session->setFlash(__('Item de orçamento salvo com sucesso.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The item orcamento could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('Erro ao salvar o item de orçamento.'));
 			}
 		} else {
 			$options = array('conditions' => array('ItemOrcamento.' . $this->ItemOrcamento->primaryKey => $id));
 			$this->request->data = $this->ItemOrcamento->find('first', $options);
 		}
-		$categorias = $this->ItemOrcamento->Categoria->find('list');
-		$orcamentos = $this->ItemOrcamento->Orcamento->find('list');
+		$categorias = $this->ItemOrcamento->Categoria->find('list', array(
+        	'fields' => array('Categoria.descricao')));
+		$orcamentos = $this->ItemOrcamento->Orcamento->find('list', array(
+        	'fields' => array('Orcamento.valor')));
 		$this->set(compact('categorias', 'orcamentos'));
 	}
 
@@ -97,13 +101,13 @@ class ItemOrcamentosController extends AppController {
 	public function delete($id = null) {
 		$this->ItemOrcamento->id = $id;
 		if (!$this->ItemOrcamento->exists()) {
-			throw new NotFoundException(__('Invalid item orcamento'));
+			throw new NotFoundException(__('Item de orçamento inválido'));
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->ItemOrcamento->delete()) {
-			$this->Session->setFlash(__('The item orcamento has been deleted.'));
+			$this->Session->setFlash(__('Item de orçamento apagado com sucesso.'));
 		} else {
-			$this->Session->setFlash(__('The item orcamento could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('Erro ao apagar item de orçamento.'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
