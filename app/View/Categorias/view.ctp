@@ -1,11 +1,11 @@
 <div class="categorias view">
 <h2><?php echo __('Categoria'); ?></h2>
 	<dl>
-		<dt><?php echo __('Id'); ?></dt>
+<!-- 		<dt><?php echo __('Id'); ?></dt>
 		<dd>
 			<?php echo h($categoria['Categoria']['id']); ?>
 			&nbsp;
-		</dd>
+		</dd> -->
 		<dt><?php echo __('Descricao'); ?></dt>
 		<dd>
 			<?php echo h($categoria['Categoria']['descricao']); ?>
