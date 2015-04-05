@@ -105,13 +105,13 @@ class DespesasController extends AppController {
 		$this->set(compact('categorias', 'receitas'));
 	}
 
-/**
- * delete method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
+	/**
+	 * delete method
+	 *
+	 * @throws NotFoundException
+	 * @param string $id
+	 * @return void
+	 */
 	public function delete($id = null) {
 		$this->Despesa->id = $id;
 		if (!$this->Despesa->exists()) {
@@ -125,4 +125,33 @@ class DespesasController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+
+	/**
+	 * extrato method
+	 *
+	 * @throws NotFoundException
+	 * @return void
+	 */
+	public function extrato()
+        {          
+           $dataInicio=$_GET['ini'];
+           $dataFim= $_GET['fim']; 
+           
+           $a = explode("-", $dataInicio);
+           $b = explode("-", $dataFim);
+           
+           $mesInicio = $a[1];
+           $mesFim = $b[1];
+           
+           if ($dataInicio != NULL && $dataFim != NULL)
+           {
+               $query = $this->Despesa->query("SELECT MONTH(D.Created) AS Mes, SUM(D.Valor) AS Total
+                                               FROM `despesas` AS D 
+                                               WHERE MONTH(D.Created) BETWEEN " . $mesInicio . " AND " . $mesFim 
+                                              ." GROUP BY MONTH(D.Created)"); 
+               $this->set('queries', $query);                
+           }
+           
+          
+        }
 }

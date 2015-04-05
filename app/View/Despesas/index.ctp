@@ -3,6 +3,8 @@
 
 	<div class="actions">
 		<?php echo $this->Html->link(__('Criar Despesa'), array('action' => 'add')); ?>
+		<br />
+		<?php echo $this->Html->link(__('Extrato'), array('controller' => 'Despesas', 'action' => 'Extrato')); ?>
 	</div>
 
 	<table cellpadding="0" cellspacing="0">

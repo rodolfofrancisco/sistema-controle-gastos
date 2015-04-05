@@ -109,4 +109,28 @@ class OrcamentosController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+
+	/**
+	 * saldo method
+	 *
+	 * @throws NotFoundException
+	 * @return void
+	 */
+	public function saldo() {
+	   $this->loadModel('Despesa');
+	   $orcamentoTotal = NULL;
+	   $despesaTotal = NULL;
+	   $m=$_GET['mes'];
+	    
+	   $a = explode("-", $m);           
+	   
+	   $mes = $a[1];             
+	   
+	   if ($mes != NULL) {
+	       $orcamentoTotal = $this->Orcamento->query("SELECT SUM(O.Valor) AS Total FROM `orcamentos` AS O WHERE MONTH(O.Created) = " . $mes );
+	       $despesaTotal = $this->Despesa->query("SELECT SUM(D.Valor) AS Total FROM `despesas` AS D WHERE MONTH(D.Created) = " . $mes );
+	       $this->set('orcamentos', $orcamentoTotal);
+	       $this->set('despesas', $despesaTotal);    
+	   }           
+    }
 }
