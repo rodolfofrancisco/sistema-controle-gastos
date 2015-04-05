@@ -56,7 +56,7 @@ class OrcamentosController extends AppController {
 			}
 		}
 		$users = $this->Orcamento->User->find('list', array(
-        	'fields' => array('User.username')
+        	'fields' => array('User.name')
    		));
 		$this->set(compact('users'));
 	}
@@ -84,7 +84,7 @@ class OrcamentosController extends AppController {
 			$this->request->data = $this->Orcamento->find('first', $options);
 		}
 		$users = $this->Orcamento->User->find('list', array(
-        	'fields' => array('User.username')
+        	'fields' => array('User.name')
    		));
 		$this->set(compact('users'));
 	}

@@ -22,7 +22,7 @@
 		<!-- <td><?php echo h($orcamento['Orcamento']['id']); ?>&nbsp;</td> -->
 		<td><?php echo h($orcamento['Orcamento']['valor']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($orcamento['User']['username'], array('controller' => 'users', 'action' => 'view', $orcamento['User']['id'])); ?>
+			<?php echo $this->Html->link($orcamento['User']['name'], array('controller' => 'users', 'action' => 'view', $orcamento['User']['id'])); ?>
 		</td>
 		<td><?php echo h($orcamento['Orcamento']['created']); ?>&nbsp;</td>
 		<td><?php echo h($orcamento['Orcamento']['modified']); ?>&nbsp;</td>
