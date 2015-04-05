@@ -1,0 +1,85 @@
+<?php
+/**
+ * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
+ * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ *
+ * Licensed under The MIT License
+ * For full copyright and license information, please see the LICENSE.txt
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @link          http://cakephp.org CakePHP(tm) Project
+ * @package       app.View.Layouts
+ * @since         CakePHP(tm) v 0.10.0.1076
+ * @license       http://www.opensource.org/licenses/mit-license.php MIT License
+ */
+
+// $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
+$cakeDescription = __d('cake_dev', 'Sistema de controle de gastos');
+$cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
+?>
+<!DOCTYPE html>
+<html>
+    <?php echo $this->element('head'); ?>
+<body>
+<<<<<<< HEAD
+	<div id="container">
+		<div id="header">
+			<h1><?php echo $this->Html->link("Sistema de controle de gastos", 'http://localhost/sistema-controle-gastos/'); ?></h1>
+			<div id="menu">
+				<div align="right">
+					<?php
+					// if (AuthComponent::user()):
+					if (true):
+					  // The user is logged in, show the logout link
+					  echo $this->Html->link('Log out', array('controller' => 'users', 'action' => 'logout'));
+					else:
+					  // The user is not logged in, show login link
+					  echo $this->Html->link('Log in', array('controller' => 'users', 'action' => 'login'));
+					endif;
+					?>
+				</div>
+				<?php echo $this->Html->link("Orçamentos", array('controller'=>'orcamentos', 'action'=>'index'), array('escape'=>false)).' | '; ?>			
+				<?php echo $this->Html->link("Item de Orçamento", array('controller'=>'itemOrcamentos', 'action'=>'index'), array('escape'=>false)).' | '; ?>			
+				<?php echo $this->Html->link("Receitas", array('controller'=>'receitas', 'action'=>'index'), array('escape'=>false)).' | '; ?>
+				<?php echo $this->Html->link("Despesas", array('controller'=>'despesas', 'action'=>'index'), array('escape'=>false)).' | '; ?>			
+				<?php echo $this->Html->link("Categorias", array('controller'=>'categorias', 'action'=>'index'), array('escape'=>false)).' | '; ?>			
+				<?php echo $this->Html->link("Usuarios", array('controller'=>'users', 'action'=>'index'), array('escape'=>false)); ?>			
+			</div>
+		</div>
+		<div id="content">
+
+			<?php echo $this->Session->flash(); ?>
+
+			<?php echo $this->fetch('content'); ?>
+		</div>
+		<div id="footer">
+			<?php echo $this->Html->link(
+					$this->Html->image('cake.power.gif', array('alt' => $cakeDescription, 'border' => '0')),
+					'http://www.cakephp.org/',
+					array('target' => '_blank', 'escape' => false, 'id' => 'cake-powered')
+				);
+			?>
+			<p>
+				<?php echo $cakeVersion; ?>
+			</p>
+		</div>
+	</div>
+	<?php echo $this->element('sql_dump'); ?>
+=======
+    <?php echo $this->element('navbar-top'); ?>
+    <div class="ch-container">
+        <div class="row">
+            <?php echo $this->element('navbar-side'); ?>
+            <div id="content" class="col-lg-10 col-sm-10">
+                <?php echo $this->Session->flash(); ?>
+                <?php echo $this->fetch('content'); ?>
+            </div>
+        </div>
+        <?php echo $this->element('footer'); ?>
+    </div>
+    <?php echo $this->element('sql_dump'); ?>
+    <?php echo $this->element('scripts'); ?>
+>>>>>>> f1b7169599b44d532317d270c96b91c3fb698602
+</body>
+</html>
