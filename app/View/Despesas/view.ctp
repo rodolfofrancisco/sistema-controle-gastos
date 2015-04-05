@@ -1,11 +1,11 @@
 <div class="despesas view">
 <h2><?php echo __('Despesa'); ?></h2>
 	<dl>
-		<dt><?php echo __('Id'); ?></dt>
+<!-- 		<dt><?php echo __('Id'); ?></dt>
 		<dd>
 			<?php echo h($despesa['Despesa']['id']); ?>
 			&nbsp;
-		</dd>
+		</dd> -->
 		<dt><?php echo __('Valor'); ?></dt>
 		<dd>
 			<?php echo h($despesa['Despesa']['valor']); ?>
@@ -18,12 +18,12 @@
 		</dd>
 		<dt><?php echo __('Categoria'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($despesa['Categoria']['id'], array('controller' => 'categorias', 'action' => 'view', $despesa['Categoria']['id'])); ?>
+			<?php echo $this->Html->link($categorias[$despesa['Categoria']['id']], array('controller' => 'categorias', 'action' => 'view', $despesa['Categoria']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Receita'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($despesa['Receita']['id'], array('controller' => 'receitas', 'action' => 'view', $despesa['Receita']['id'])); ?>
+			<?php echo $this->Html->link($receitas[$despesa['Receita']['id']], array('controller' => 'receitas', 'action' => 'view', $despesa['Receita']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Created'); ?></dt>
@@ -38,7 +38,7 @@
 		</dd>
 	</dl>
 </div>
-<div class="actions">
+<!-- <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('Edit Despesa'), array('action' => 'edit', $despesa['Despesa']['id'])); ?> </li>
@@ -51,3 +51,4 @@
 		<li><?php echo $this->Html->link(__('New Receita'), array('controller' => 'receitas', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
+ -->

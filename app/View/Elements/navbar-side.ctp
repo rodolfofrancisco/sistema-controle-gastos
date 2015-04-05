@@ -9,16 +9,19 @@
                             <?php echo $this->Html->link('<i class="glyphicon glyphicon-home"></i> Início', array('controller' => 'users', 'action' => 'index'), array('escape' => false)); ?>
                         </li>
                         <li>
-                            <?php echo $this->Html->link('Recursos', array('controller' => 'despesas', 'action' => 'index')); ?>
+                            <?php echo $this->Html->link('Recursos', array('controller' => 'receitas', 'action' => 'index')); ?>
                         </li>
                         <li>
-                            <?php echo $this->Html->link('Despesas', array('controller' => 'receitas', 'action' => 'index')); ?>
+                            <?php echo $this->Html->link('Despesas', array('controller' => 'despesas', 'action' => 'index')); ?>
                         </li>
                         <li>
                             <?php echo $this->Html->link('Categorias', array('controller' => 'categorias', 'action' => 'index')); ?>
                         </li>
                         <li>
                             <?php echo $this->Html->link('Orçamentos', array('controller' => 'orcamentos', 'action' => 'index')); ?>
+                        </li>
+                        <li>
+                            <?php echo $this->Html->link('Itens de orçamentos', array('controller' => 'ItemOrcamentos', 'action' => 'index')); ?>
                         </li>
                     </ul>
                 </div>

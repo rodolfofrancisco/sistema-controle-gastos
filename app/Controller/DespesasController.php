@@ -38,6 +38,14 @@ class DespesasController extends AppController {
 		}
 		$options = array('conditions' => array('Despesa.' . $this->Despesa->primaryKey => $id));
 		$this->set('despesa', $this->Despesa->find('first', $options));
+		$categorias = $this->Despesa->Categoria->find('list', array(
+        	'fields' => array('Categoria.descricao')
+   		));
+		$this->set('categorias', $categorias);
+		$receitas = $this->Despesa->Receita->find('list', array(
+        	'fields' => array('Receita.descricao')
+   		));
+		$this->set('receitas', $receitas);
 	}
 
 /**
@@ -55,8 +63,12 @@ class DespesasController extends AppController {
 				$this->Session->setFlash(__('The despesa could not be saved. Please, try again.'));
 			}
 		}
-		$categorias = $this->Despesa->Categoria->find('list');
-		$receitas = $this->Despesa->Receita->find('list');
+		$categorias = $this->Despesa->Categoria->find('list', array(
+        	'fields' => array('Categoria.descricao')
+   		));
+		$receitas = $this->Despesa->Receita->find('list', array(
+        	'fields' => array('Receita.descricao')
+   		));
 		$this->set(compact('categorias', 'receitas'));
 	}
 
@@ -82,8 +94,12 @@ class DespesasController extends AppController {
 			$options = array('conditions' => array('Despesa.' . $this->Despesa->primaryKey => $id));
 			$this->request->data = $this->Despesa->find('first', $options);
 		}
-		$categorias = $this->Despesa->Categoria->find('list');
-		$receitas = $this->Despesa->Receita->find('list');
+		$categorias = $this->Despesa->Categoria->find('list', array(
+        	'fields' => array('Categoria.descricao')
+   		));
+		$receitas = $this->Despesa->Receita->find('list', array(
+        	'fields' => array('Receita.descricao')
+   		));
 		$this->set(compact('categorias', 'receitas'));
 	}
 
