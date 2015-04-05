@@ -9,17 +9,17 @@
 		echo $this->Form->input('orcamento_id');
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+<?php echo $this->Form->end(__('Enviar')); ?>
 </div>
-<div class="actions">
+<!-- <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('ItemOrcamento.id')), array(), __('Are you sure you want to delete # %s?', $this->Form->value('ItemOrcamento.id'))); ?></li>
+		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('ItemOrcamento.id')), array(), __('Você tem certeza que deseja excluir # %s?', $this->Form->value('ItemOrcamento.id'))); ?></li>
 		<li><?php echo $this->Html->link(__('List Item Orcamentos'), array('action' => 'index')); ?></li>
 		<li><?php echo $this->Html->link(__('List Categorias'), array('controller' => 'categorias', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Categoria'), array('controller' => 'categorias', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Orcamentos'), array('controller' => 'orcamentos', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Orcamento'), array('controller' => 'orcamentos', 'action' => 'add')); ?> </li>
 	</ul>
-</div>
+</div> -->

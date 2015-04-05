@@ -30,7 +30,7 @@
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $despesa['Despesa']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $despesa['Despesa']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $despesa['Despesa']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $despesa['Despesa']['id']))); ?>
+			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $despesa['Despesa']['id']), array('confirm' => __('Você tem certeza que deseja excluir # %s?', $despesa['Despesa']['id']))); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
