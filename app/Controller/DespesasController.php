@@ -34,14 +34,16 @@ class DespesasController extends AppController {
  */
 	public function view($id = null) {
 		if (!$this->Despesa->exists($id)) {
-			throw new NotFoundException(__('Invalid despesa'));
+			throw new NotFoundException(__('Despesa inválida'));
 		}
 		$options = array('conditions' => array('Despesa.' . $this->Despesa->primaryKey => $id));
 		$this->set('despesa', $this->Despesa->find('first', $options));
+
 		$categorias = $this->Despesa->Categoria->find('list', array(
         	'fields' => array('Categoria.descricao')
    		));
 		$this->set('categorias', $categorias);
+		
 		$receitas = $this->Despesa->Receita->find('list', array(
         	'fields' => array('Receita.descricao')
    		));
@@ -57,10 +59,10 @@ class DespesasController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Despesa->create();
 			if ($this->Despesa->save($this->request->data)) {
-				$this->Session->setFlash(__('The despesa has been saved.'));
+				$this->Session->setFlash(__('Despesa salva com sucesso'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The despesa could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('Erro ao salvar despesa'));
 			}
 		}
 		$categorias = $this->Despesa->Categoria->find('list', array(
@@ -81,14 +83,14 @@ class DespesasController extends AppController {
  */
 	public function edit($id = null) {
 		if (!$this->Despesa->exists($id)) {
-			throw new NotFoundException(__('Invalid despesa'));
+			throw new NotFoundException(__('Despesa inválida'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Despesa->save($this->request->data)) {
-				$this->Session->setFlash(__('The despesa has been saved.'));
+				$this->Session->setFlash(__('Despesa salva com sucesso'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The despesa could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('Erro ao salvar despesa'));
 			}
 		} else {
 			$options = array('conditions' => array('Despesa.' . $this->Despesa->primaryKey => $id));
@@ -113,13 +115,13 @@ class DespesasController extends AppController {
 	public function delete($id = null) {
 		$this->Despesa->id = $id;
 		if (!$this->Despesa->exists()) {
-			throw new NotFoundException(__('Invalid despesa'));
+			throw new NotFoundException(__('Despesa inválida'));
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Despesa->delete()) {
-			$this->Session->setFlash(__('The despesa has been deleted.'));
+			$this->Session->setFlash(__('Despesa deletada com sucesso.'));
 		} else {
-			$this->Session->setFlash(__('The despesa could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('Erro ao deletar despesa'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}

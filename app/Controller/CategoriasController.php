@@ -38,6 +38,18 @@ class CategoriasController extends AppController {
 		}
 		$options = array('conditions' => array('Categoria.' . $this->Categoria->primaryKey => $id));
 		$this->set('categoria', $this->Categoria->find('first', $options));
+
+		$this->loadModel('Orcamento');
+		$orcamentos = $this->Orcamento->find('list', array(
+        	'fields' => array('Orcamento.valor')
+   		));
+		$this->set('orcamentos', $orcamentos);
+
+		$this->loadModel('Receita');
+		$receitas = $this->Receita->find('list', array(
+        	'fields' => array('Receita.descricao')
+   		));
+		$this->set('receitas', $receitas);
 	}
 
 /**

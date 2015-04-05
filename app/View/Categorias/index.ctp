@@ -1,9 +1,14 @@
 <div class="categorias index">
 	<h2><?php echo __('Categorias'); ?></h2>
+
+	<div class="actions">
+		<?php echo $this->Html->link(__('Nova Categoria'), array('action' => 'add')); ?>
+	</div>
+
 	<table cellpadding="0" cellspacing="0">
 	<thead>
 	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
+			<!-- <th><?php echo $this->Paginator->sort('id'); ?></th> -->
 			<th><?php echo $this->Paginator->sort('descricao'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('modified'); ?></th>
@@ -13,7 +18,7 @@
 	<tbody>
 	<?php foreach ($categorias as $categoria): ?>
 	<tr>
-		<td><?php echo h($categoria['Categoria']['id']); ?>&nbsp;</td>
+		<!-- <td><?php echo h($categoria['Categoria']['id']); ?>&nbsp;</td> -->
 		<td><?php echo h($categoria['Categoria']['descricao']); ?>&nbsp;</td>
 		<td><?php echo h($categoria['Categoria']['created']); ?>&nbsp;</td>
 		<td><?php echo h($categoria['Categoria']['modified']); ?>&nbsp;</td>
@@ -34,13 +39,13 @@
 	?>	</p>
 	<div class="paging">
 	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
+		echo $this->Paginator->prev('< ' . __('anterior'), array(), null, array('class' => 'prev disabled'));
 		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
+		echo $this->Paginator->next(__('próximo') . ' >', array(), null, array('class' => 'next disabled'));
 	?>
 	</div>
 </div>
-<div class="actions">
+<!-- <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('New Categoria'), array('action' => 'add')); ?></li>
@@ -50,3 +55,4 @@
 		<li><?php echo $this->Html->link(__('New Item Orcamento'), array('controller' => 'item_orcamentos', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
+ -->
