@@ -1,58 +1,49 @@
-<div class="users index">
-	<h2><?php echo __('Users'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
-	<thead>
-	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('username'); ?></th>
-			<th><?php echo $this->Paginator->sort('password'); ?></th>
-			<th><?php echo $this->Paginator->sort('role'); ?></th>
-			<th><?php echo $this->Paginator->sort('email'); ?></th>
-			<th><?php echo $this->Paginator->sort('telefone'); ?></th>
-			<th><?php echo $this->Paginator->sort('endereco'); ?></th>
-			<th><?php echo $this->Paginator->sort('created'); ?></th>
-			<th><?php echo $this->Paginator->sort('modified'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	</thead>
-	<tbody>
-	<?php foreach ($users as $user): ?>
-	<tr>
-		<td><?php echo h($user['User']['id']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['username']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['password']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['role']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['email']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['telefone']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['endereco']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['created']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['modified']); ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $user['User']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $user['User']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $user['User']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $user['User']['id']))); ?>
-		</td>
-	</tr>
-<?php endforeach; ?>
-	</tbody>
-	</table>
-	<p>
-	<?php
-	echo $this->Paginator->counter(array(
-		'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
-	?>	</p>
-	<div class="paging">
-	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
-	?>
-	</div>
+<div>
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li>
+            <a href="#">Tables</a>
+        </li>
+    </ul>
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New User'), array('action' => 'add')); ?></li>
-	</ul>
+
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-header well" data-original-title="">
+                <h2><i class="glyphicon glyphicon-user"></i> Usuários</h2>
+            </div>
+            <div class="box-content">
+                <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>Telefone</th>
+                            <th>Endereço</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($users as $user): ?>
+                            <tr>
+                                <td><?php echo h($user['User']['name']); ?>&nbsp;</td>
+                                <td><?php echo h($user['User']['email']); ?>&nbsp;</td>
+                                <td><?php echo h($user['User']['phone']); ?>&nbsp;</td>
+                                <td><?php echo h($user['User']['address']); ?>&nbsp;</td>
+                                <td class="actions">
+                                        <?php echo $this->Html->link('<i class="glyphicon glyphicon-zoom-in icon-white"></i> Visualizar', array('action' => 'view', $user['User']['id']), array('escape' => false, 'class' => 'btn btn-success')); ?>
+                                        <?php echo $this->Html->link('<i class="glyphicon glyphicon-edit icon-white"></i> Editar', array('action' => 'edit', $user['User']['id']), array('escape' => false, 'class' => 'btn btn-info')); ?>
+                                        <?php echo $this->Form->postLink('<i class="glyphicon glyphicon-trash icon-white"></i> Excluir', array('action' => 'delete', $user['User']['id']), array('confirm' => 'Você deseja realmente deletar este item?', 'escape' => false, 'class' => 'btn btn-danger')); ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
+

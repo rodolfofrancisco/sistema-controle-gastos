@@ -1,24 +1,31 @@
-<div class="users form">
-<?php echo $this->Form->create('User'); ?>
-	<fieldset>
-		<legend><?php echo __('Edit User'); ?></legend>
-	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('username');
-		echo $this->Form->input('password');
-		echo $this->Form->input('role');
-		echo $this->Form->input('email');
-		echo $this->Form->input('telefone');
-		echo $this->Form->input('endereco');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+<div>
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li>
+            <a href="#">Forms</a>
+        </li>
+    </ul>
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('User.id')), array(), __('Are you sure you want to delete # %s?', $this->Form->value('User.id'))); ?></li>
-		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index')); ?></li>
-	</ul>
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-header well" data-original-title="">
+                <h2><i class="glyphicon glyphicon-edit"></i> Perfil</h2>
+            </div>
+            <div class="box-content">
+                <?php 
+                    echo $this->Form->create('User', array('role' => 'form'));
+                    echo $this->Form->input('name', array('class' => 'form-control', 'div' => array('class' => 'form-group'), 'label' => 'Nome'));
+                    echo $this->Form->input('email', array('class' => 'form-control', 'div' => array('class' => 'form-group'), 'label' => 'E-mail'));
+                    echo $this->Form->input('phone', array('class' => 'form-control', 'div' => array('class' => 'form-group'), 'label' => 'Telefone'));
+                    echo $this->Form->input('address', array('class' => 'form-control', 'div' => array('class' => 'form-group'), 'label' => 'Endereço'));
+                    echo $this->Form->input('password', array('class' => 'form-control', 'div' => array('class' => 'form-group'), 'label' => 'Senha'));
+                    echo $this->Form->submit('Salvar', array('class' => 'btn btn-default', 'div' => false));
+                    echo $this->Form->end(); 
+                ?>
+            </div>
+        </div>
+    </div>
 </div>

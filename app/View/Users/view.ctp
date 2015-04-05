@@ -1,59 +1,37 @@
-<div class="users view">
-<h2><?php echo __('User'); ?></h2>
-	<dl>
-		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Username'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['username']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Password'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['password']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Role'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['role']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Email'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['email']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Telefone'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['telefone']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Endereco'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['endereco']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Created'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['created']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Modified'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['modified']); ?>
-			&nbsp;
-		</dd>
-	</dl>
+<div>
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li>
+            <a href="#">Forms</a>
+        </li>
+    </ul>
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit User'), array('action' => 'edit', $user['User']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete User'), array('action' => 'delete', $user['User']['id']), array(), __('Are you sure you want to delete # %s?', $user['User']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User'), array('action' => 'add')); ?> </li>
-	</ul>
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-header well" data-original-title="">
+                <h2><i class="glyphicon glyphicon-eye-open icon-white"></i> Usuário</h2>
+            </div>
+            <div class="box-content">
+                <div class="form-group">
+                    <label>Nome: </label>
+                    <?php echo h($user['User']['name']); ?>
+                </div>
+                <div class="form-group">
+                    <label>E-mail: </label>
+                    <?php echo h($user['User']['email']); ?>
+                </div>
+                <div class="form-group">
+                    <label>Endereço: </label>
+                    <?php echo h($user['User']['address']); ?>
+                </div>
+                <div class="form-group">
+                    <label>Telefone: </label>
+                    <?php echo h($user['User']['phone']); ?>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
