@@ -1,4 +1,7 @@
 <div class="orcamentos index">
+<?php
+	/*echo $this->Session->read('Auth.User.id');*/
+?>
 	<h2><?php echo __('Orcamentos'); ?></h2>
 
 	<div class="actions">
