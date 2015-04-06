@@ -1,57 +1,68 @@
-<div class="receitas index">
-	<h2><?php echo __('Receitas'); ?></h2>
-
-	<div class="actions">
-		<?php echo $this->Html->link(__('Criar Receita'), array('action' => 'add')); ?>
-	</div>
-
-	<table cellpadding="0" cellspacing="0">
-	<thead>
-	<tr>
-			<!-- <th><?php echo $this->Paginator->sort('id'); ?></th> -->
-			<th><?php echo $this->Paginator->sort('valor'); ?></th>
-			<th><?php echo $this->Paginator->sort('descricao'); ?></th>
-			<th><?php echo $this->Paginator->sort('created'); ?></th>
-			<th><?php echo $this->Paginator->sort('modified'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	</thead>
-	<tbody>
-	<?php foreach ($receitas as $receita): ?>
-	<tr>
-		<!-- <td><?php echo h($receita['Receita']['id']); ?>&nbsp;</td> -->
-		<td><?php echo h($receita['Receita']['valor']); ?>&nbsp;</td>
-		<td><?php echo h($receita['Receita']['descricao']); ?>&nbsp;</td>
-		<td><?php echo h($receita['Receita']['created']); ?>&nbsp;</td>
-		<td><?php echo h($receita['Receita']['modified']); ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $receita['Receita']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $receita['Receita']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $receita['Receita']['id']), array('confirm' => __('Você tem certeza que deseja excluir # %s?', $receita['Receita']['id']))); ?>
-		</td>
-	</tr>
-<?php endforeach; ?>
-	</tbody>
-	</table>
-	<p>
-	<?php
-	echo $this->Paginator->counter(array(
-		'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
-	?>	</p>
-	<div class="paging">
-	<?php
-		echo $this->Paginator->prev('< ' . __('anterior'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('próxima') . ' >', array(), null, array('class' => 'next disabled'));
-	?>
-	</div>
+<div>
+    <ul class="breadcrumb">
+        <li>
+            <?php echo $this->Html->link('Início', array('controller' => 'users', 'action' => 'index')); ?>
+        </li>
+        <li>
+            <a>Receitas</a>
+        </li>
+    </ul>
 </div>
-<!-- <div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Receita'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Despesas'), array('controller' => 'despesas', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Despesa'), array('controller' => 'despesas', 'action' => 'add')); ?> </li>
-	</ul>
-</div> -->
+<?php 
+    $message = $this->Session->flash();
+    if ($message): 
+?>
+        <div class="alert alert-info alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <?php echo $message; ?>
+        </div>
+<?php endif; ?>
+<div class="row">
+    <div class="box col-md-12">
+        <?php echo $this->Html->link('<i class="glyphicon glyphicon-plus-sign"></i> Criar Receita', array('controller' => 'receitas', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-primary')); ?>
+        <br><br>
+        <div class="box-inner">
+            <div class="box-header well" data-original-title="">
+                <h2><i class="glyphicon glyphicon-arrow-up"></i> Receitas</h2>
+            </div>
+            <div class="box-content">
+                <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+                    <thead>
+                        <tr>
+                            <th>Valor (R$)</th>
+                            <th>Descrição</th>
+                            <th>Data da Última Alteração</th>
+                            <th>Data de Criação</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($receitas as $receita): ?>
+                            <tr>
+                                <td><?php echo number_format(h($receita['Receita']['valor']), 2, ',', '.'); ?>&nbsp;</td>
+                                <td><?php echo h($receita['Receita']['descricao']); ?>&nbsp;</td>
+                                <td>
+                                    <?php 
+                                        $date = new DateTime($receita['Receita']['modified']);
+                                        echo h($date->format('d/m/Y H:i:s'));
+                                    ?>&nbsp;
+                                </td>
+                                <td>
+                                    <?php 
+                                        $date = new DateTime($receita['Receita']['created']);
+                                        echo h($date->format('d/m/Y H:i:s'));
+                                    ?>&nbsp;
+                                </td>
+                                <td class="actions">
+                                    <?php echo $this->Html->link('<i class="glyphicon glyphicon-eye-open"></i> Visualizar', array('controller' => 'receitas', 'action' => 'view', $receita['Receita']['id']), array('escape' => false, 'class' => 'btn btn-success')); ?>
+                                    <?php echo $this->Html->link('<i class="glyphicon glyphicon-edit icon-white"></i> Editar', array('controller' => 'receitas', 'action' => 'edit', $receita['Receita']['id']), array('escape' => false, 'class' => 'btn btn-info')); ?>
+                                    <?php echo $this->Form->postLink('<i class="glyphicon glyphicon-trash icon-white"></i> Excluir', array('controller' => 'receitas', 'action' => 'delete', $receita['Receita']['id']), array('confirm' => 'Você deseja realmente deletar este item?', 'escape' => false, 'class' => 'btn btn-danger')); ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

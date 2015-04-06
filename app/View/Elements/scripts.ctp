@@ -15,4 +15,5 @@
     echo $this->Html->script('jquery.uploadify-3.1.min');
     echo $this->Html->script('jquery.history');
     echo $this->Html->script('charisma');
+    echo $this->Html->script('jquery.mask.min');
     echo $this->fetch('script');

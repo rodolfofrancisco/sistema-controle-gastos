@@ -1,80 +1,90 @@
-<div class="receitas view">
-<h2><?php echo __('Receita'); ?></h2>
-	<dl>
-<!-- 		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($receita['Receita']['id']); ?>
-			&nbsp;
-		</dd> -->
-		<dt><?php echo __('Valor'); ?></dt>
-		<dd>
-			<?php echo h($receita['Receita']['valor']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Descricao'); ?></dt>
-		<dd>
-			<?php echo h($receita['Receita']['descricao']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Created'); ?></dt>
-		<dd>
-			<?php echo h($receita['Receita']['created']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Modified'); ?></dt>
-		<dd>
-			<?php echo h($receita['Receita']['modified']); ?>
-			&nbsp;
-		</dd>
-	</dl>
+<div>
+    <ul class="breadcrumb">
+        <li>
+            <?php echo $this->Html->link('Início', array('controller' => 'users', 'action' => 'index')); ?>
+        </li>
+        <li>
+            <?php echo $this->Html->link('Receitas', array('controller' => 'receitas', 'action' => 'index')); ?>
+        </li>
+        <li>
+            <a>Visualizar Receita</a>
+        </li>
+    </ul>
 </div>
-<!-- <div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Receita'), array('action' => 'edit', $receita['Receita']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Receita'), array('action' => 'delete', $receita['Receita']['id']), array(), __('Você tem certeza que deseja excluir # %s?', $receita['Receita']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Receitas'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Receita'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Despesas'), array('controller' => 'despesas', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Despesa'), array('controller' => 'despesas', 'action' => 'add')); ?> </li>
-	</ul>
-</div> -->
-<div class="related">
-	<h3><?php echo __('Despesas relacionadas'); ?></h3>
-	<?php if (!empty($receita['Despesa'])): ?>
-	<table cellpadding = "0" cellspacing = "0">
-	<tr>
-		<!-- <th><?php echo __('Id'); ?></th> -->
-		<th><?php echo __('Valor'); ?></th>
-		<th><?php echo __('Descricao'); ?></th>
-		<th><?php echo __('Categoria'); ?></th>
-		<!-- <th><?php echo __('Receita Id'); ?></th> -->
-		<th><?php echo __('Created'); ?></th>
-		<th><?php echo __('Modified'); ?></th>
-		<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	<?php foreach ($receita['Despesa'] as $despesa): ?>
-		<tr>
-			<!-- <td><?php echo $despesa['id']; ?></td> -->
-			<td><?php echo $despesa['valor']; ?></td>
-			<td><?php echo $despesa['descricao']; ?></td>
-			<td><?php echo $categorias[$despesa['categoria_id']]; ?></td>
-			<!-- <td><?php echo $despesa['receita_id']; ?></td> -->
-			<td><?php echo $despesa['created']; ?></td>
-			<td><?php echo $despesa['modified']; ?></td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'despesas', 'action' => 'view', $despesa['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'despesas', 'action' => 'edit', $despesa['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'despesas', 'action' => 'delete', $despesa['id']), array(), __('Você tem certeza que deseja excluir # %s?', $despesa['id'])); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-	</table>
-<?php endif; ?>
-
-<!-- 	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Despesa'), array('controller' => 'despesas', 'action' => 'add')); ?> </li>
-		</ul>
-	</div> -->
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-header well" data-original-title="">
+                <h2><i class="glyphicon glyphicon-eye-open icon-white"></i> Visualizar Receita</h2>
+            </div>
+            <div class="box-content">
+                <div class="form-group">
+                    <label>Valor: </label>
+                    <?php echo number_format(h($receita['Receita']['valor']), 2, ',', '.'); ?>
+                </div>
+                <div class="form-group">
+                    <label>Descrição: </label>
+                    <?php echo h($receita['Receita']['descricao']); ?>
+                </div>
+                <div class="form-group">
+                    <label>Data da Última Alteração: </label>
+                    <?php 
+                        $date = new DateTime($receita['Receita']['modified']);
+                        echo h($date->format('d/m/Y H:i:s'));
+                    ?>
+                </div>
+                <div class="form-group">
+                    <label>Data de Criação: </label>
+                    <?php 
+                        $date = new DateTime($receita['Receita']['created']);
+                        echo h($date->format('d/m/Y H:i:s'));
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-header well" data-original-title="">
+                <h2><i class="glyphicon glyphicon-arrow-down"></i> Despesas Relacionadas</h2>
+            </div>
+            <div class="box-content">
+                <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+                    <thead>
+                        <tr>
+                            <th>Valor (R$)</th>
+                            <th>Descrição</th>
+                            <th>Categoria</th>
+                            <th>Data da Última Alteração</th>
+                            <th>Data de Criação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($receita['Despesa'] as $despesa): ?>
+                            <tr>
+                                <td><?php echo number_format(h($despesa['valor']), 2, ',', '.'); ?>&nbsp;</td>
+                                <td><?php echo h($despesa['descricao']); ?>&nbsp;</td>
+                                <td><?php echo $categorias[$despesa['categoria_id']]; ?></td>
+                                <td>
+                                    <?php 
+                                        $date = new DateTime($despesa['modified']);
+                                        echo h($date->format('d/m/Y H:i:s'));
+                                    ?>&nbsp;
+                                </td>
+                                <td>
+                                    <?php 
+                                        $date = new DateTime($despesa['created']);
+                                        echo h($date->format('d/m/Y H:i:s'));
+                                    ?>&nbsp;
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>

@@ -1,41 +1,47 @@
-<div class="orcamentos view">
-<h2><?php echo __('Orcamento'); ?></h2>
-	<dl>
-<!-- 		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($orcamento['Orcamento']['id']); ?>
-			&nbsp;
-		</dd> -->
-		<dt><?php echo __('Valor'); ?></dt>
-		<dd>
-			<?php echo h($orcamento['Orcamento']['valor']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('User'); ?></dt>
-		<dd>
-			<?php echo $this->Html->link($orcamento['User']['name'], array('controller' => 'users', 'action' => 'view', $orcamento['User']['id'])); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Created'); ?></dt>
-		<dd>
-			<?php echo h($orcamento['Orcamento']['created']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Modified'); ?></dt>
-		<dd>
-			<?php echo h($orcamento['Orcamento']['modified']); ?>
-			&nbsp;
-		</dd>
-	</dl>
+<div>
+    <ul class="breadcrumb">
+        <li>
+            <?php echo $this->Html->link('Início', array('controller' => 'users', 'action' => 'index')); ?>
+        </li>
+        <li>
+            <?php echo $this->Html->link('Orçamentos', array('controller' => 'orcamentos', 'action' => 'index')); ?>
+        </li>
+        <li>
+            <a>Visualizar Orçamento</a>
+        </li>
+    </ul>
 </div>
-<!-- <div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Orcamento'), array('action' => 'edit', $orcamento['Orcamento']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Orcamento'), array('action' => 'delete', $orcamento['Orcamento']['id']), array(), __('Você tem certeza que deseja excluir # %s?', $orcamento['Orcamento']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Orcamentos'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Orcamento'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
-	</ul>
-</div> -->
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-header well" data-original-title="">
+                <h2><i class="glyphicon glyphicon-eye-open icon-white"></i> Visualizar Orçamento</h2>
+            </div>
+            <div class="box-content">
+                <div class="form-group">
+                    <label>Valor: </label>
+                    <?php echo number_format(h($orcamento['Orcamento']['valor']), 2, ',', '.'); ?>
+                </div>
+                <div class="form-group">
+                    <label>Usuario: </label>
+                    <?php echo $this->Html->link($orcamento['User']['name'], array('controller' => 'users', 'action' => 'view', $orcamento['User']['id'])); ?>
+                </div>
+                <div class="form-group">
+                    <label>Data da Última Alteração: </label>
+                    <?php 
+                        $date = new DateTime($orcamento['Orcamento']['modified']);
+                        echo h($date->format('d/m/Y H:i:s'));
+                    ?>
+                </div>
+                <div class="form-group">
+                    <label>Data de Criação: </label>
+                    <?php 
+                        $date = new DateTime($orcamento['Orcamento']['created']);
+                        echo h($date->format('d/m/Y H:i:s'));
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

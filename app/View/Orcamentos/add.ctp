@@ -1,20 +1,31 @@
-<div class="orcamentos form">
-<?php echo $this->Form->create('Orcamento'); ?>
-	<fieldset>
-		<legend><?php echo __('Criar Orçamento'); ?></legend>
-	<?php
-		echo $this->Form->input('valor');
-		echo $this->Form->input('user_id');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Enviar')); ?>
+<div>
+    <ul class="breadcrumb">
+        <li>
+            <?php echo $this->Html->link('Início', array('controller' => 'users', 'action' => 'index')); ?>
+        </li>
+        <li>
+            <?php echo $this->Html->link('Orçamentos', array('controller' => 'orcamentos', 'action' => 'index')); ?>
+        </li>
+        <li>
+            <a>Criar Orçamento</a>
+        </li>
+    </ul>
 </div>
-<!-- <div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-
-		<li><?php echo $this->Html->link(__('List Orcamentos'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
-	</ul>
-</div> -->
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-header well" data-original-title="">
+                <h2><i class="glyphicon glyphicon-plus-sign"></i> Criar Orçamento</h2>
+            </div>
+            <div class="box-content">
+                <?php 
+                    echo $this->Form->create('Orcamento', array('role' => 'form'));
+                    echo $this->Form->input('valor', array('class' => 'form-control', 'div' => array('class' => 'form-group'), 'label' => 'Valor (R$)'));
+                    echo $this->Form->input('user_id', array('class' => 'form-control', 'div' => array('class' => 'form-group'), 'label' => 'Usuário'));
+                    echo $this->Form->submit('Salvar', array('class' => 'btn btn-default', 'div' => false));
+                    echo $this->Form->end(); 
+                ?>
+            </div>
+        </div>
+    </div>
+</div>

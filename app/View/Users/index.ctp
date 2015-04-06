@@ -1,14 +1,19 @@
 <div>
     <ul class="breadcrumb">
         <li>
-            <a href="#">Home</a>
-        </li>
-        <li>
-            <a href="#">Tables</a>
+            <?php echo $this->Html->link('Início', array('controller' => 'users', 'action' => 'index')); ?>
         </li>
     </ul>
 </div>
-
+<?php 
+    $message = $this->Session->flash();
+    if ($message): 
+?>
+        <div class="alert alert-info alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <?php echo $message; ?>
+        </div>
+<?php endif; ?>
 <div class="row">
     <div class="box col-md-12">
         <div class="box-inner">
@@ -23,6 +28,8 @@
                             <th>E-mail</th>
                             <th>Telefone</th>
                             <th>Endereço</th>
+                            <th>Data da Última Alteração</th>
+                            <th>Data de Criação</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
@@ -33,10 +40,21 @@
                                 <td><?php echo h($user['User']['email']); ?>&nbsp;</td>
                                 <td><?php echo h($user['User']['phone']); ?>&nbsp;</td>
                                 <td><?php echo h($user['User']['address']); ?>&nbsp;</td>
+                                <td>
+                                    <?php 
+                                        $date = new DateTime($receita['User']['modified']);
+                                        echo h($date->format('d/m/Y H:i:s'));
+                                    ?>&nbsp;
+                                </td>
+                                <td>
+                                    <?php 
+                                        $date = new DateTime($receita['User']['created']);
+                                        echo h($date->format('d/m/Y H:i:s'));
+                                    ?>&nbsp;
+                                </td>
                                 <td class="actions">
-                                        <?php echo $this->Html->link('<i class="glyphicon glyphicon-zoom-in icon-white"></i> Visualizar', array('action' => 'view', $user['User']['id']), array('escape' => false, 'class' => 'btn btn-success')); ?>
-                                        <?php echo $this->Html->link('<i class="glyphicon glyphicon-edit icon-white"></i> Editar', array('action' => 'edit', $user['User']['id']), array('escape' => false, 'class' => 'btn btn-info')); ?>
-                                        <?php echo $this->Form->postLink('<i class="glyphicon glyphicon-trash icon-white"></i> Excluir', array('action' => 'delete', $user['User']['id']), array('confirm' => 'Você deseja realmente deletar este item?', 'escape' => false, 'class' => 'btn btn-danger')); ?>
+                                    <?php echo $this->Html->link('<i class="glyphicon glyphicon-eye-open"></i> Visualizar', array('action' => 'view', $user['User']['id']), array('escape' => false, 'class' => 'btn btn-success')); ?>
+                                    <?php // echo $this->Form->postLink('<i class="glyphicon glyphicon-trash icon-white"></i> Excluir', array('action' => 'delete', $user['User']['id']), array('confirm' => 'Você deseja realmente deletar este item?', 'escape' => false, 'class' => 'btn btn-danger')); ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -46,4 +64,3 @@
         </div>
     </div>
 </div>
-
