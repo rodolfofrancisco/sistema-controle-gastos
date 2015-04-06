@@ -74,6 +74,9 @@ class UsersController extends AppController {
             throw new NotFoundException(__('Invalid user'));
         }
         if ($this->request->is(array('post', 'put'))) {
+            if (!empty($this->request->data['User']['newPassword'])) {
+                $this->request->data['User']['password'] = $this->request->data['User']['newPassword'];
+            }
             if ($this->User->save($this->request->data)) {
                 $this->Session->setFlash(__('The user has been saved.'));
                 return $this->redirect(array('action' => 'index'));

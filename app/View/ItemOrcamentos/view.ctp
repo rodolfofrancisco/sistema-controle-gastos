@@ -1,48 +1,51 @@
-<div class="itemOrcamentos view">
-<h2><?php echo __('Item Orcamento'); ?></h2>
-	<dl>
-<!-- 		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($itemOrcamento['ItemOrcamento']['id']); ?>
-			&nbsp;
-		</dd> -->
-		<dt><?php echo __('Valor'); ?></dt>
-		<dd>
-			<?php echo h($itemOrcamento['ItemOrcamento']['valor']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Categoria'); ?></dt>
-		<dd>
-			<?php echo $this->Html->link($itemOrcamento['Categoria']['descricao'], array('controller' => 'categorias', 'action' => 'view', $itemOrcamento['Categoria']['id'])); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Orcamento'); ?></dt>
-		<dd>
-			<?php echo $this->Html->link($itemOrcamento['Orcamento']['valor'], array('controller' => 'orcamentos', 'action' => 'view', $itemOrcamento['Orcamento']['id'])); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Created'); ?></dt>
-		<dd>
-			<?php echo h($itemOrcamento['ItemOrcamento']['created']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Modified'); ?></dt>
-		<dd>
-			<?php echo h($itemOrcamento['ItemOrcamento']['modified']); ?>
-			&nbsp;
-		</dd>
-	</dl>
+<div>
+    <ul class="breadcrumb">
+        <li>
+            <?php echo $this->Html->link('Início', array('controller' => 'users', 'action' => 'index')); ?>
+        </li>
+        <li>
+            <?php echo $this->Html->link('Itens de Orçamentos', array('controller' => 'ItemOrcamentos', 'action' => 'index')); ?>
+        </li>
+        <li>
+            <a>Visualizar Item</a>
+        </li>
+    </ul>
 </div>
-<!-- <div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Item Orcamento'), array('action' => 'edit', $itemOrcamento['ItemOrcamento']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Item Orcamento'), array('action' => 'delete', $itemOrcamento['ItemOrcamento']['id']), array(), __('Você tem certeza que deseja excluir # %s?', $itemOrcamento['ItemOrcamento']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Item Orcamentos'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Item Orcamento'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Categorias'), array('controller' => 'categorias', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Categoria'), array('controller' => 'categorias', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Orcamentos'), array('controller' => 'orcamentos', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Orcamento'), array('controller' => 'orcamentos', 'action' => 'add')); ?> </li>
-	</ul>
-</div> -->
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-header well" data-original-title="">
+                <h2><i class="glyphicon glyphicon-eye-open icon-white"></i> Visualizar Item</h2>
+            </div>
+            <div class="box-content">
+                <div class="form-group">
+                    <label>Valor: </label>
+                    <?php echo number_format(h($itemOrcamento['ItemOrcamento']['valor']), 2, ',', '.'); ?>
+                </div>
+                <div class="form-group">
+                    <label>Categoria: </label>
+                    <?php echo $this->Html->link($itemOrcamento['Categoria']['descricao'], array('controller' => 'categorias', 'action' => 'view', $itemOrcamento['Categoria']['id'])); ?>
+                </div>
+                <div class="form-group">
+                    <label>Orçamento: </label>
+                    <?php echo $this->Html->link($itemOrcamento['Orcamento']['valor'], array('controller' => 'orcamentos', 'action' => 'view', $itemOrcamento['Orcamento']['id'])); ?>
+                </div>
+                <div class="form-group">
+                    <label>Data da Última Alteração: </label>
+                    <?php 
+                        $date = new DateTime($itemOrcamento['ItemOrcamento']['modified']);
+                        echo h($date->format('d/m/Y H:i:s'));
+                    ?>
+                </div>
+                <div class="form-group">
+                    <label>Data de Criação: </label>
+                    <?php 
+                        $date = new DateTime($itemOrcamento['ItemOrcamento']['created']);
+                        echo h($date->format('d/m/Y H:i:s'));
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

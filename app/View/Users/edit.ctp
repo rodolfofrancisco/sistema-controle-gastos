@@ -1,10 +1,10 @@
 <div>
     <ul class="breadcrumb">
         <li>
-            <a href="#">Home</a>
+            <?php echo $this->Html->link('Início', array('controller' => 'users', 'action' => 'index')); ?>
         </li>
         <li>
-            <a href="#">Forms</a>
+            <a>Perfil</a>
         </li>
     </ul>
 </div>
@@ -17,11 +17,12 @@
             <div class="box-content">
                 <?php 
                     echo $this->Form->create('User', array('role' => 'form'));
+                    echo $this->Form->input('id');
                     echo $this->Form->input('name', array('class' => 'form-control', 'div' => array('class' => 'form-group'), 'label' => 'Nome'));
                     echo $this->Form->input('email', array('class' => 'form-control', 'div' => array('class' => 'form-group'), 'label' => 'E-mail'));
                     echo $this->Form->input('phone', array('class' => 'form-control', 'div' => array('class' => 'form-group'), 'label' => 'Telefone'));
                     echo $this->Form->input('address', array('class' => 'form-control', 'div' => array('class' => 'form-group'), 'label' => 'Endereço'));
-                    echo $this->Form->input('password', array('class' => 'form-control', 'div' => array('class' => 'form-group'), 'label' => 'Senha'));
+                    echo $this->Form->input('newPassword', array('class' => 'form-control', 'type' => 'password', 'div' => array('class' => 'form-group'), 'label' => 'Nova Senha'));
                     echo $this->Form->submit('Salvar', array('class' => 'btn btn-default', 'div' => false));
                     echo $this->Form->end(); 
                 ?>
@@ -29,3 +30,8 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $('[name*=phone]').mask('(00) 0000-0000');
+    });
+</script>

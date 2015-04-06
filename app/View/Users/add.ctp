@@ -40,3 +40,8 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $('[name*=phone]').mask('(00) 0000-0000');
+    });
+</script>

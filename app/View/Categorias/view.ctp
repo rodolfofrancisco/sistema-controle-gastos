@@ -1,114 +1,129 @@
-<div class="categorias view">
-<h2><?php echo __('Categoria'); ?></h2>
-	<dl>
-<!-- 		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($categoria['Categoria']['id']); ?>
-			&nbsp;
-		</dd> -->
-		<dt><?php echo __('Descricao'); ?></dt>
-		<dd>
-			<?php echo h($categoria['Categoria']['descricao']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Created'); ?></dt>
-		<dd>
-			<?php echo h($categoria['Categoria']['created']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Modified'); ?></dt>
-		<dd>
-			<?php echo h($categoria['Categoria']['modified']); ?>
-			&nbsp;
-		</dd>
-	</dl>
+<div>
+    <ul class="breadcrumb">
+        <li>
+            <?php echo $this->Html->link('Início', array('controller' => 'users', 'action' => 'index')); ?>
+        </li>
+        <li>
+            <?php echo $this->Html->link('Categorias', array('controller' => 'categorias', 'action' => 'index')); ?>
+        </li>
+        <li>
+            <a>Visualizar Categoria</a>
+        </li>
+    </ul>
 </div>
-<!-- <div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Categoria'), array('action' => 'edit', $categoria['Categoria']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Categoria'), array('action' => 'delete', $categoria['Categoria']['id']), array(), __('Você tem certeza que deseja excluir # %s?', $categoria['Categoria']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Categorias'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Categoria'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Despesas'), array('controller' => 'despesas', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Despesa'), array('controller' => 'despesas', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Item Orcamentos'), array('controller' => 'item_orcamentos', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Item Orcamento'), array('controller' => 'item_orcamentos', 'action' => 'add')); ?> </li>
-	</ul>
-</div> -->
-<div class="related">
-	<h3><?php echo __('Despesas relacionadas'); ?></h3>
-	<?php if (!empty($categoria['Despesa'])): ?>
-	<table cellpadding = "0" cellspacing = "0">
-	<tr>
-		<!-- <th><?php echo __('Id'); ?></th> -->
-		<th><?php echo __('Valor'); ?></th>
-		<th><?php echo __('Descricao'); ?></th>
-		<!-- <th><?php echo __('Categoria Id'); ?></th> -->
-		<th><?php echo __('Receita Id'); ?></th>
-		<th><?php echo __('Created'); ?></th>
-		<th><?php echo __('Modified'); ?></th>
-		<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	<?php foreach ($categoria['Despesa'] as $despesa): ?>
-		<tr>
-			<!-- <td><?php echo $despesa['id']; ?></td> -->
-			<td><?php echo $despesa['valor']; ?></td>
-			<td><?php echo $despesa['descricao']; ?></td>
-			<!-- <td><?php echo $despesa['categoria_id']; ?></td> -->
-			<td><?php echo $receitas[$despesa['receita_id']]; ?></td>
-			<td><?php echo $despesa['created']; ?></td>
-			<td><?php echo $despesa['modified']; ?></td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'despesas', 'action' => 'view', $despesa['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'despesas', 'action' => 'edit', $despesa['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'despesas', 'action' => 'delete', $despesa['id']), array(), __('Você tem certeza que deseja excluir # %s?', $despesa['id'])); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-	</table>
-<?php endif; ?>
 
-<!-- 	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Despesa'), array('controller' => 'despesas', 'action' => 'add')); ?> </li>
-		</ul>
-	</div> -->
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-header well" data-original-title="">
+                <h2><i class="glyphicon glyphicon-eye-open icon-white"></i> Visualizar Categoria</h2>
+            </div>
+            <div class="box-content">
+                <div class="form-group">
+                    <label>Descrição: </label>
+                    <?php echo h($categoria['Categoria']['descricao']); ?>
+                </div>
+                <div class="form-group">
+                    <label>Data da Última Alteração: </label>
+                    <?php 
+                        $date = new DateTime($categoria['Categoria']['modified']);
+                        echo h($date->format('d/m/Y H:i:s'));
+                    ?>
+                </div>
+                <div class="form-group">
+                    <label>Data de Criação: </label>
+                    <?php 
+                        $date = new DateTime($categoria['Categoria']['created']);
+                        echo h($date->format('d/m/Y H:i:s'));
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="related">
-	<h3><?php echo __('Itens de Orçamentos relacionados'); ?></h3>
-	<?php if (!empty($categoria['ItemOrcamento'])): ?>
-	<table cellpadding = "0" cellspacing = "0">
-	<tr>
-		<!-- <th><?php echo __('Id'); ?></th> -->
-		<th><?php echo __('Valor'); ?></th>
-		<!-- <th><?php echo __('Categoria Id'); ?></th> -->
-		<th><?php echo __('Orcamento'); ?></th>
-		<th><?php echo __('Created'); ?></th>
-		<th><?php echo __('Modified'); ?></th>
-		<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	<?php foreach ($categoria['ItemOrcamento'] as $itemOrcamento): ?>
-		<tr>
-			<!-- <td><?php echo $itemOrcamento['id']; ?></td> -->
-			<td><?php echo $itemOrcamento['valor']; ?></td>
-			<!-- <td><?php echo $itemOrcamento['categoria_id']; ?></td> -->
-			<td><?php echo $orcamentos[$itemOrcamento['orcamento_id']]; ?></td>
-			<td><?php echo $itemOrcamento['created']; ?></td>
-			<td><?php echo $itemOrcamento['modified']; ?></td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'item_orcamentos', 'action' => 'view', $itemOrcamento['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'item_orcamentos', 'action' => 'edit', $itemOrcamento['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'item_orcamentos', 'action' => 'delete', $itemOrcamento['id']), array(), __('Você tem certeza que deseja excluir # %s?', $itemOrcamento['id'])); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-	</table>
-<?php endif; ?>
+        
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-header well" data-original-title="">
+                <h2><i class="glyphicon glyphicon-arrow-down"></i> Despesas Relacionadas</h2>
+            </div>
+            <div class="box-content">
+                <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+                    <thead>
+                        <tr>
+                            <th>Valor (R$)</th>
+                            <th>Descrição</th>
+                            <th>Receita</th>
+                            <th>Data da Última Alteração</th>
+                            <th>Data de Criação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($categoria['Despesa'] as $despesa): ?>
+                            <tr>
+                                <td><?php echo number_format(h($despesa['valor']), 2, ',', '.'); ?>&nbsp;</td>
+                                <td><?php echo h($despesa['descricao']); ?>&nbsp;</td>
+                                <td><?php echo $receitas[$despesa['receita_id']];; ?></td>
+                                <td>
+                                    <?php 
+                                        $date = new DateTime($despesa['modified']);
+                                        echo h($date->format('d/m/Y H:i:s'));
+                                    ?>&nbsp;
+                                </td>
+                                <td>
+                                    <?php 
+                                        $date = new DateTime($despesa['created']);
+                                        echo h($date->format('d/m/Y H:i:s'));
+                                    ?>&nbsp;
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
-<!-- 	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Item Orcamento'), array('controller' => 'item_orcamentos', 'action' => 'add')); ?> </li>
-		</ul>
-	</div> -->
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-header well" data-original-title="">
+                <h2><i class="glyphicon glyphicon-align-justify"></i> Itens de Orçamentos Relacionados</h2>
+            </div>
+            <div class="box-content">
+                <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+                    <thead>
+                        <tr>
+                            <th>Valor (R$)</th>
+                            <th>Orçamento</th>
+                            <th>Data da Última Alteração</th>
+                            <th>Data de Criação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($categoria['ItemOrcamento'] as $itemOrcamento): ?>
+                            <tr>
+                                <td><?php echo number_format(h($itemOrcamento['valor']), 2, ',', '.'); ?>&nbsp;</td>
+                                <td><?php echo number_format($orcamentos[$itemOrcamento['orcamento_id']], 2, ',', '.'); ?></td>
+                                <td>
+                                    <?php 
+                                        $date = new DateTime($itemOrcamento['modified']);
+                                        echo h($date->format('d/m/Y H:i:s'));
+                                    ?>&nbsp;
+                                </td>
+                                <td>
+                                    <?php 
+                                        $date = new DateTime($itemOrcamento['created']);
+                                        echo h($date->format('d/m/Y H:i:s'));
+                                    ?>&nbsp;
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>

@@ -7,9 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html" style="width: auto;"> 
-                <span>Sistema de Controle de Gastos</span>
-            </a>
+            <?php echo $this->Html->link('<span>Sistema de Controle de Gastos</span>', array('controller' => 'users', 'action' => 'index'), array('escape' => false, 'class' => 'navbar-brand', 'style' => 'width: auto;')); ?>
 
             <!-- user dropdown starts -->
             <div class="btn-group pull-right">

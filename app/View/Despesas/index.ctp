@@ -1,70 +1,77 @@
-<div class="despesas index">
-	<h2><?php echo __('Despesas'); ?></h2>
-
-	<div class="actions">
-		<?php echo $this->Html->link(__('Criar Despesa'), array('action' => 'add')); ?>
-		<br />
-		<?php echo $this->Html->link(__('Extrato'), array('controller' => 'Despesas', 'action' => 'Extrato')); ?>
-	</div>
-
-	<table cellpadding="0" cellspacing="0">
-	<thead>
-	<tr>
-			<!-- <th><?php echo $this->Paginator->sort('id'); ?></th> -->
-			<th><?php echo $this->Paginator->sort('valor'); ?></th>
-			<th><?php echo $this->Paginator->sort('descricao'); ?></th>
-			<th><?php echo $this->Paginator->sort('categoria_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('receita_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('created'); ?></th>
-			<th><?php echo $this->Paginator->sort('modified'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	</thead>
-	<tbody>
-	<?php foreach ($despesas as $despesa): ?>
-	<tr>
-		<!-- <td><?php echo h($despesa['Despesa']['id']); ?>&nbsp;</td> -->
-		<td><?php echo h($despesa['Despesa']['valor']); ?>&nbsp;</td>
-		<td><?php echo h($despesa['Despesa']['descricao']); ?>&nbsp;</td>
-		<td>
-			<?php echo $this->Html->link($despesa['Categoria']['descricao'], array('controller' => 'categorias', 'action' => 'view', $despesa['Categoria']['id'])); ?>
-		</td>
-		<td>
-			<?php echo $this->Html->link($despesa['Receita']['descricao'], array('controller' => 'receitas', 'action' => 'view', $despesa['Receita']['id'])); ?>
-		</td>
-		<td><?php echo h($despesa['Despesa']['created']); ?>&nbsp;</td>
-		<td><?php echo h($despesa['Despesa']['modified']); ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $despesa['Despesa']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $despesa['Despesa']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $despesa['Despesa']['id']), array('confirm' => __('Você tem certeza que deseja excluir # %s?', $despesa['Despesa']['id']))); ?>
-		</td>
-	</tr>
-<?php endforeach; ?>
-	</tbody>
-	</table>
-	<p>
-	<?php
-	echo $this->Paginator->counter(array(
-		'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
-	?>	</p>
-	<div class="paging">
-	<?php
-		echo $this->Paginator->prev('< ' . __('anterior'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('próximo') . ' >', array(), null, array('class' => 'next disabled'));
-	?>
-	</div>
+<div>
+    <ul class="breadcrumb">
+        <li>
+            <?php echo $this->Html->link('Início', array('action' => 'index')); ?>
+        </li>
+        <li>
+            <a>Despesas</a>
+        </li>
+    </ul>
 </div>
-<!-- <div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Despesa'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Categorias'), array('controller' => 'categorias', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Categoria'), array('controller' => 'categorias', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Receitas'), array('controller' => 'receitas', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Receita'), array('controller' => 'receitas', 'action' => 'add')); ?> </li>
-	</ul>
+<?php 
+    $message = $this->Session->flash();
+    if ($message): 
+?>
+        <div class="alert alert-info alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <?php echo $message; ?>
+        </div>
+<?php endif; ?>
+<div class="row">
+    <div class="box col-md-12">
+        <?php echo $this->Html->link('<i class="glyphicon glyphicon-plus-sign"></i> Criar Despesa', array('controller' => 'despesas', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-primary')); ?>
+        <?php echo $this->Html->link('<i class="glyphicon glyphicon-share-alt"></i> Extrato', array('controller' => 'Despesas', 'action' => 'Extrato'), array('escape' => false, 'class' => 'btn btn-warning')); ?>
+        <br><br>
+        <div class="box-inner">
+            <div class="box-header well" data-original-title="">
+                <h2><i class="glyphicon glyphicon-arrow-down"></i> Despesas</h2>
+            </div>
+            <div class="box-content">
+                <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+                    <thead>
+                        <tr>
+                            <th>Valor (R$)</th>
+                            <th>Descrição</th>
+                            <th>Categoria</th>
+                            <th>Receita</th>
+                            <th>Data da Última Alteração</th>
+                            <th>Data de Criação</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($despesas as $despesa): ?>
+                            <tr>
+                                <td><?php echo number_format(h($despesa['Despesa']['valor']), 2, ',', '.'); ?>&nbsp;</td>
+                                <td><?php echo h($despesa['Despesa']['descricao']); ?>&nbsp;</td>
+                                <td>
+                                    <?php echo $this->Html->link($despesa['Categoria']['descricao'], array('controller' => 'categorias', 'action' => 'view', $despesa['Categoria']['id'])); ?>
+                                </td>
+                                <td>
+                                    <?php echo $this->Html->link($despesa['Receita']['descricao'], array('controller' => 'receitas', 'action' => 'view', $despesa['Receita']['id'])); ?>
+                                </td>
+                                <td>
+                                    <?php 
+                                        $date = new DateTime($despesa['Despesa']['modified']);
+                                        echo h($date->format('d/m/Y H:i:s'));
+                                    ?>&nbsp;
+                                </td>
+                                <td>
+                                    <?php 
+                                        $date = new DateTime($despesa['Despesa']['created']);
+                                        echo h($date->format('d/m/Y H:i:s'));
+                                    ?>&nbsp;
+                                </td>
+                                <td class="actions">
+                                    <?php echo $this->Html->link('<i class="glyphicon glyphicon-eye-open"></i> Visualizar', array('controller' => 'despesas', 'action' => 'view', $despesa['Despesa']['id']), array('escape' => false, 'class' => 'btn btn-success')); ?>
+                                    <?php echo $this->Html->link('<i class="glyphicon glyphicon-edit icon-white"></i> Editar', array('controller' => 'despesas', 'action' => 'edit', $despesa['Despesa']['id']), array('escape' => false, 'class' => 'btn btn-info')); ?>
+                                    <?php echo $this->Form->postLink('<i class="glyphicon glyphicon-trash icon-white"></i> Excluir', array('controller' => 'despesas', 'action' => 'delete', $despesa['Despesa']['id']), array('confirm' => 'Você deseja realmente deletar este item?', 'escape' => false, 'class' => 'btn btn-danger')); ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
- -->
